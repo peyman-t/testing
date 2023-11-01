@@ -1,0 +1,20 @@
+[book]
+authors = ["Peyman Teymoori"]
+language = "en"
+multilingual = false
+src = "docs"
+title = "C++ Bootcamp"
+
+[preprocessor.toc]
+command = "mdbook-toc"
+renderer = ["html"]
+
+[preprocessor.mermaid]
+command = "mdbook-mermaid"
+
+[output.html]
+curly-quotes = false
+mathjax-support = true
+copy-fonts = true
+site-url = "/noroff-accelerate/cpp-bootcamp/"
+additional-js = ["mermaid.min.js", "alpinejs.min.js", "mermaid-init.js"]

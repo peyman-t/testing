@@ -1,0 +1,39 @@
+stages:
+  - deploy
+
+cache:
+  paths:
+    - cargo/bin
+
+pages:
+  stage: deploy
+  image: rust:1
+  script:
+    - export PATH="$PATH:$(pwd)/cargo/bin"
+    - mdbook --version || cargo install mdbook --root cargo
+    - mdbook-mermaid -V || cargo install mdbook-mermaid --root cargo
+    - mdbook-toc -V || cargo install mdbook-toc --root cargo
+    - mdbook-mermaid install .
+    - wget -O alpinejs.min.js unpkg.com/alpinejs
+    - mdbook build -d public
+    - ls -lah public
+  artifacts:
+    paths:
+      - public
+  only:
+    - main
+
+# pandoc_docx:
+#   stage: deploy
+#   image:
+#     name: pandoc/core:latest
+#     entrypoint: ["/bin/sh", "-c"]
+#   script:
+#     - apk add zip
+#     - sh ./pandoc.sh
+#     - zip -r out.zip ./out
+#   artifacts:
+#     paths:
+#       - out.zip
+#   only:
+#     - master

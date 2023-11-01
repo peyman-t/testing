@@ -1,0 +1,16 @@
+{
+    "gitbook": "3.2.2",
+    "title": "C++ Bootcamp",
+    "description": "Course Notes",
+    "language": "en",
+    "plugins": [
+      "page-toc"
+    ],
+    "pluginsConfig": {
+      "page-toc": {
+        "selector": ".markdown-section h2, .markdown-section h3",
+        "position": "top",
+        "showByDefault": true
+      }
+    }
+  }
